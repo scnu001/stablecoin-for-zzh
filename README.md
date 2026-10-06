@@ -1,7 +1,10 @@
 # COMP 7810A Assignment Two — Stablecoin Lab
 
-This repository is the complete submission for Assignment Two. Everything a
-grader needs to check is on this page: the architecture diagram, the passing
+This repository is the complete submission for Assignment Two:
+
+**https://github.com/scnu001/stablecoin-for-zzh**
+
+Everything a grader needs to check is on this page: the architecture diagram, the passing
 test-suite screenshots, the Ex3 break-the-peg evidence, the Sepolia deployment
 addresses with Etherscan links, and the written answers to all discussion
 questions.
