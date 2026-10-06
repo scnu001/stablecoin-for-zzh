@@ -66,22 +66,36 @@ selection used to produce the evidence:
 forge test --use "$HOME/.foundry/solc/solc-v0.8.24" --offline
 ```
 
-The screenshots below are consecutive captures of the complete passing run.
-`pass3.png` contains the final summary line and the invariant statistics.
+The three screenshots below (`evidence/pass1.png`, `evidence/pass2.png`,
+`evidence/pass3.png`) are consecutive captures of one complete passing run of
+`forge test --offline`. Each one is labelled below so it is clear they are the
+**test-passing screenshots**, not deployment or other output. `pass3.png`
+contains the final summary line and the invariant statistics.
 
-### Full suite, part 1 (Ex7 + Tier 3 suites)
+### Screenshot 1 of 3 — forge test passing (Ex7 + Tier 3 suites)
 
-![forge test passing part 1](evidence/pass1.png)
+![forge test passing screenshot 1 of 3](evidence/pass1.png)
 
-### Full suite, part 2 (core, Ex2/Ex4, Ex5, Ex6 suites)
+**Test-passing screenshot 1/3** — `forge test` output, part one: the Ex7
+Unstoppable challenge suite and the Tier 3 module suites, all green.
 
-![forge test passing part 2](evidence/pass2.png)
+### Screenshot 2 of 3 — forge test passing (core, Ex2/Ex4, Ex5, Ex6 suites)
 
-### Full suite, part 3 — final summary: 40 tests passed, 0 failed, 0 skipped
+![forge test passing screenshot 2 of 3](evidence/pass2.png)
 
-![forge test passing part 3](evidence/pass3.png)
+**Test-passing screenshot 2/3** — `forge test` output, part two: core
+`Stablecoin.t.sol`, Ex2/Ex4 loop tasks, Ex5 over-collateralization and the
+Ex6 invariant suite, all green.
 
-Latest full run result:
+### Screenshot 3 of 3 — forge test passing (final summary line)
+
+![forge test passing screenshot 3 of 3](evidence/pass3.png)
+
+**Test-passing screenshot 3/3** — the final summary of the same run:
+`40 tests passed, 0 failed, 0 skipped`, plus the Ex6 invariant statistics
+(`runs: 256, calls: 128000, reverts: 0`).
+
+Result of the run shown in the three screenshots above:
 
 - Core tests: 7 passed
 - Ex2/Ex4 tests: 7 passed
@@ -107,11 +121,16 @@ attackerBalance: 1999998000000
 
 The ERC-20 operations all succeed, but the backing invariant
 `totalCollateral() >= totalSupply()` is false — this is the deliberate depeg
-demonstration.
+demonstration. The screenshot below (`evidence/screenshotforex3.png`) is the
+**Ex3 screenshot**: the local Anvil terminal showing the unbacked mint.
 
-![Ex3 local depeg evidence](evidence/screenshotforex3.png)
+![Ex3 screenshot — unbacked mint on local Anvil](evidence/screenshotforex3.png)
 
-Local Anvil deployment used for the attack:
+**Ex3 screenshot** — on the local Anvil chain, after granting `MINTER_ROLE` to
+the attacker, `totalSupply()` is `1999998000000` while `totalCollateral()`
+is `0`: the peg is broken.
+
+Local Anvil deployment used for the attack (shown in the Ex3 screenshot):
 
 - MockUSDC: `0x5FbDB2315678afecb367f032d93F642f64180aa3`
 - SimpleStablecoin: `0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512`
@@ -130,9 +149,9 @@ base contracts (MockUSDC, SimpleStablecoin, Vault).
 
 | Contract | Address | Etherscan |
 |---|---|---|
-| MockUSDC | [`0xAe4f266A2fC2911e59f991539017dd1597c4d9B3`](https://sepolia.etherscan.io/address/0xAe4f266A2fC2911e59f991539017dd1597c4d9B3) | [verified](https://sepolia.etherscan.io/address/0xAe4f266A2fC2911e59f991539017dd1597c4d9B3) |
-| SimpleStablecoin | [`0x831AFEced33D71471eD5f7124Ef9Fc344b78f815`](https://sepolia.etherscan.io/address/0x831AFEced33D71471eD5f7124Ef9Fc344b78f815) | [verified](https://sepolia.etherscan.io/address/0x831AFEced33D71471eD5f7124Ef9Fc344b78f815) |
-| Vault | [`0x1900a4F371CC001eF6371b6F2Ee5c5b82cD18314`](https://sepolia.etherscan.io/address/0x1900a4F371CC001eF6371b6F2Ee5c5b82cD18314) | [verified](https://sepolia.etherscan.io/address/0x1900a4F371CC001eF6371b6F2Ee5c5b82cD18314) |
+| MockUSDC | `0xAe4f266A2fC2911e59f991539017dd1597c4d9B3` | https://sepolia.etherscan.io/address/0xAe4f266A2fC2911e59f991539017dd1597c4d9B3 |
+| SimpleStablecoin | `0x831AFEced33D71471eD5f7124Ef9Fc344b78f815` | https://sepolia.etherscan.io/address/0x831AFEced33D71471eD5f7124Ef9Fc344b78f815 |
+| Vault | `0x1900a4F371CC001eF6371b6F2Ee5c5b82cD18314` | https://sepolia.etherscan.io/address/0x1900a4F371CC001eF6371b6F2Ee5c5b82cD18314 |
 
 ### Deployment transactions
 
